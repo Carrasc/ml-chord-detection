@@ -16,6 +16,9 @@ public class PianoKeys : MonoBehaviour
     [SerializeField]
     private float m_Exponent = 1;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
     private MaterialPropertyBlock m_MPB;
     private Dictionary<int, int> m_RootKeyCount;
     private Dictionary<int, int> m_OtherKeysCount;
@@ -64,6 +67,25 @@ public class PianoKeys : MonoBehaviour
             m_Renderers.Add(k, r);
             m_Keys.Add(k);
         }
+    }
+
+    private void Start()
+    {
+        _audioSource.loop = true;
+
+        // TODO: Choose the right audio device
+        foreach (var device in Microphone.devices)
+        {
+            Debug.Log(device);
+            Microphone.End(device);
+        }
+
+        _audioSource.clip = Microphone.Start(Microphone.devices[0], true, 10, AudioSettings.outputSampleRate);
+        while (!(Microphone.GetPosition(null) > 0))
+        {
+        }
+
+        _audioSource.Play();
     }
 
     private void SetColors()

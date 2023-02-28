@@ -289,17 +289,18 @@ namespace MBaske.Sensors.Audio
 
 
         /// <inheritdoc/>
-        public override int[] GetObservationShape()
-        {
-            return m_Shape.ToArray();
-        }
+        // public override int[] GetObservationShape()
+        // {
+        //     return m_Shape.ToArray();
+        // }
 
         /// <inheritdoc/>
-        public override ISensor CreateSensor()
+        public override ISensor[] CreateSensors()
         {
             Sensor = new AudioSensor(m_Shape, m_CompressionType, SensorName);
             Sensor.ResetEvent += OnSensorReset;
-            return Sensor;
+            var sensors = new ISensor[] { Sensor };
+            return sensors;
         }
 
         private void Awake()

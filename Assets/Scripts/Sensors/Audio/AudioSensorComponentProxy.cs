@@ -23,18 +23,19 @@ namespace MBaske.Sensors.Audio
         private AudioSensorComponent m_AudioSensorComponent;
 
         /// <inheritdoc/>
-        public override ISensor CreateSensor()
+        public override ISensor[] CreateSensors()
         {
             FindAudioSensorComponent();
-            return new AudioSensorProxy(m_AudioSensorComponent.Sensor);
+            var sensors = new ISensor[] { new AudioSensorProxy(m_AudioSensorComponent.Sensor) };
+            return sensors;
         }
 
         /// <inheritdoc/>
-        public override int[] GetObservationShape()
-        {
-            FindAudioSensorComponent();
-            return m_AudioSensorComponent.GetObservationShape();
-        }
+        // public override int[] GetObservationShape()
+        // {
+        //     FindAudioSensorComponent();
+        //     return m_AudioSensorComponent.GetObservationShape();
+        // }
 
         // Assuming there's only one AudioSensorComponent in the scene.
         private void FindAudioSensorComponent()

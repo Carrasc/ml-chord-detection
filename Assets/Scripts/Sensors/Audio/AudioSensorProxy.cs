@@ -21,6 +21,11 @@ namespace MBaske.Sensors.Audio
             m_AudioSensor = audioSensor;
         }
 
+        public CompressionSpec GetCompressionSpec()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <inheritdoc/>
         public string GetName()
         {
@@ -43,6 +48,11 @@ namespace MBaske.Sensors.Audio
         public byte[] GetCompressedObservation()
         {
             return m_AudioSensor.CachedCompressedObservation;
+        }
+
+        public ObservationSpec GetObservationSpec()
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <inheritdoc/>
