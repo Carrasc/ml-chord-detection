@@ -1,5 +1,4 @@
 ﻿using Unity.MLAgents.Sensors;
-using Unity.MLAgents;
 
 namespace MBaske.Sensors.Audio
 {
@@ -22,11 +21,6 @@ namespace MBaske.Sensors.Audio
             m_AudioSensor = audioSensor;
         }
 
-        public CompressionSpec GetCompressionSpec()
-        {
-            return new CompressionSpec(m_AudioSensor.CompressionType);
-        }
-
         /// <inheritdoc/>
         public string GetName()
         {
@@ -34,31 +28,21 @@ namespace MBaske.Sensors.Audio
         }
 
         /// <inheritdoc/>
-        public int[] GetObservationShape()
+        public ObservationSpec GetObservationSpec()
         {
-            return m_AudioSensor.Shape.ToArray();
+            return m_AudioSensor.GetObservationSpec();
         }
 
         /// <inheritdoc/>
-        public SensorCompressionType GetCompressionType()
+        public CompressionSpec GetCompressionSpec()
         {
-            return m_AudioSensor.CompressionType;
+            return m_AudioSensor.GetCompressionSpec();
         }
 
         /// <inheritdoc/>
         public byte[] GetCompressedObservation()
         {
             return m_AudioSensor.CachedCompressedObservation;
-        }
-
-        public ObservationSpec GetObservationSpec()
-        {
-            InplaceArray<int> shape = new InplaceArray<int>(m_AudioSensor.Shape.Width, m_AudioSensor.Shape.Height, m_AudioSensor.Shape.Channels);
-            InplaceArray<DimensionProperty> prop = new InplaceArray<DimensionProperty>(DimensionProperty.Unspecified, DimensionProperty.Unspecified, DimensionProperty.Unspecified);
-            ObservationSpec test = new ObservationSpec(shape, prop);
-
-            //throw new NotImplementedException();
-            return test;
         }
 
         /// <inheritdoc/>
