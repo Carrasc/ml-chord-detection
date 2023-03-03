@@ -1181,8 +1181,8 @@ MonoBehaviour:
   m_Normalize: 0
   m_Shape:
     SignalType: 1
-    Width: 1
-    Height: 1
+    Width: 44
+    Height: 44
   m_CalibrationButtonActive: 1
   m_SettingsWatcher:
     SampleType: 1
@@ -9415,7 +9415,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: bc76f2636341a4147838bb3501278d52, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: fbb32ebd0377944af9daf3b0a777c4b7, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: ChordDetection
